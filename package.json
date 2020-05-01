@@ -5,8 +5,9 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "test": "jest"
+    "make": "tsc",
+    "test": "jest",
+    "lint": "eslint '**/*.ts'"
   },
   "author": "Martello Security",
   "license": "MIT",
@@ -31,6 +32,10 @@
     },
     "extends": [
       "plugin:@typescript-eslint/recommended"
+    ],
+    "ignorePatterns": [
+      "node_modules/",
+      "dist/"
     ]
   }
 }
