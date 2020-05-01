@@ -21,7 +21,7 @@ describe('notNull', () => {
     });
 
     it('defaults to a standard error message', () => {
-      expect(() => { notNull(null) }).toThrow('value cannot be null');
+      expect(() => { notNull(null) }).toThrow('value must not be null');
     });
 
     it('allows a custom error message to be throw', () => {
