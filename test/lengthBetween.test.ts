@@ -52,6 +52,14 @@ describe('lengthBetween', () => {
       expect(() => { lengthBetween(input, 1, 3) }).toThrow(MaximumLengthError);
     });
 
+    it('defaults to a standard error message', () => {
+      expect(() => { lengthBetween('abcde', 2, 4) }).toThrow('value must has length between 2 and 4');
+    });
+
+    it('allows a custom error message to be throw', () => {
+      expect(() => { lengthBetween('abcde', 2, 4, 'min two, max four') }).toThrow('min two, max four');
+    });
+
   });
 
   describe('extreme', () => {
