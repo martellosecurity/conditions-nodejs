@@ -4,10 +4,10 @@ class NullValueError extends Error {
 /**
  * Condition asserts that value is not null or undefined.
  *
- * @param value - Required value on which to run the condition.
- * @param message - Optional custom message to be thrown on failure.
- * @returns Original value it it meets the condition.
- * @throws NullValueError if value fails to meet the condition.
+ * @param value - Value on which to run the condition.
+ * @param message - Override message to be thrown on failure.
+ * @returns Value on passing the condition.
+ * @throws NullValueError on failure.
  */
 function notNull<T>(value: T, message = 'value must not be null'): T {
 

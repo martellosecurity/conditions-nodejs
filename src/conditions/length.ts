@@ -8,9 +8,19 @@ class MinimumLengthError extends Error {
 class MaximumLengthError extends Error {
 };
 
+/**
+ * Condition asserts that value has a length greater than or equal to a
+ * specified minimum.
+ *
+ * @param value - Value on which to run the condition.
+ * @param minimum - Minimum length of the value.
+ * @param message - Override message to be thrown on failure.
+ * @returns Value on passing the condition.
+ * @throws MinimumLengthError on failure.
+ */
 function minLength<T extends Length>(value: T, minimum: number, message = `value must have minimum length of ${minimum}`): T {
 
-  // check a length property even exists
+  // check length property even exists
   if (null == value?.length || value.length < minimum) {
     throw new MinimumLengthError(message);
   }
@@ -19,9 +29,19 @@ function minLength<T extends Length>(value: T, minimum: number, message = `value
 
 }
 
+/**
+ * Condition asserts that value has a length less than or equal to a
+ * specified maximum.
+ *
+ * @param value - Value on which to run the condition.
+ * @param maximum - Maximum length of the value.
+ * @param message - Override message to be thrown on failure.
+ * @returns Value on passing the condition.
+ * @throws MaximumLengthError on failure.
+ */
 function maxLength<T extends Length>(value: T, maximum: number, message = `value must have maximum length of ${maximum}`): T {
 
-  // check a length property even exists
+  // check length property even exists
   if (null == value?.length || value.length > maximum) {
     throw new MaximumLengthError(message);
   }
