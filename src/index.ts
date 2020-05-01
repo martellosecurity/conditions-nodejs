@@ -1,5 +1,1 @@
-import notNull from './conditions/notNull';
-
-export {
-  notNull
-}
+export * from './conditions/notNull';

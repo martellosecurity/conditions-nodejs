@@ -22,7 +22,8 @@
   },
   "jest": {
     "preset": "ts-jest",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testTimeout": 100
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
