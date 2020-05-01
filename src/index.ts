@@ -1,2 +1,2 @@
 export * from './conditions/notNull';
-export * from './conditions/lengths';
+export * from './conditions/length';
