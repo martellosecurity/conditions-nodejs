@@ -36,6 +36,14 @@ describe('maxLength', () => {
       expect(() => { maxLength(input, 3) }).toThrow(MaximumLengthError);
     });
 
+    it('defaults to a standard error message', () => {
+      expect(() => { maxLength('abcd', 3) }).toThrow('value must have maximum length of 3');
+    });
+
+    it('allows a custom error message to be throw', () => {
+      expect(() => { maxLength('abcd', 3, 'maximum three') }).toThrow('maximum three');
+    });
+
   });
 
   describe('extreme', () => {

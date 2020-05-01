@@ -36,6 +36,14 @@ describe('minLength', () => {
       expect(() => { minLength(input, 5) }).toThrow(MinimumLengthError);
     });
 
+    it('defaults to a standard error message', () => {
+      expect(() => { minLength('abcd', 5) }).toThrow('value must have minimum length of 5');
+    });
+
+    it('allows a custom error message to be throw', () => {
+      expect(() => { minLength('abcd', 5, 'minimum five') }).toThrow('minimum five');
+    });
+
   });
 
   describe('extreme', () => {
