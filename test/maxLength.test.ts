@@ -1,13 +1,13 @@
-import { minLength, MinimumLengthError } from '../src/index';
+import { maxLength, MaximumLengthError } from '../src/index';
 
-describe('minLength', () => {
+describe('maxLength', () => {
 
   describe('valid', () => {
 
     test.each(
       ['abcd', [1, 2, 3, 4], Buffer.alloc(4)]
-    )('returns input values with length longer than condition', (input) => {
-      expect(minLength(input, 3)).toBe(input);
+    )('returns input values with length shorter than condition', (input) => {
+      expect(maxLength(input, 5)).toBe(input);
     });
 
   });
@@ -17,7 +17,7 @@ describe('minLength', () => {
     test.each(
       ['abcd', [1, 2, 3, 4], Buffer.alloc(4)]
     )('returns input values with same length as condition', (input) => {
-      expect(minLength(input, 4)).toBe(input);
+      expect(maxLength(input, 4)).toBe(input);
     });
 
   });
@@ -27,13 +27,13 @@ describe('minLength', () => {
     test.each(
       [null, undefined]
     )('throws an error on objects without length', (input) => {
-      expect(() => { minLength(input, 3) }).toThrow(MinimumLengthError);
+      expect(() => { maxLength(input, 5) }).toThrow(MaximumLengthError);
     });
 
     test.each(
       ['abcd', [1, 2, 3, 4], Buffer.alloc(4)]
-    )('throws an error on input values with length shorter than condition', (input) => {
-      expect(() => { minLength(input, 5) }).toThrow(MinimumLengthError);
+    )('throws an error on input values with length longer than condition', (input) => {
+      expect(() => { maxLength(input, 3) }).toThrow(MaximumLengthError);
     });
 
   });
@@ -41,8 +41,8 @@ describe('minLength', () => {
   describe('extreme', () => {
 
     it('handles long input values without failure', () => {
-      const input = '*'.repeat(Math.pow(2, 24));
-      expect(minLength(input, 4)).toBe(input);
+      const input = '*'.repeat(Math.pow(2, 23));
+      expect(maxLength(input, Math.pow(2, 23) + 1)).toBe(input);
     });
 
   });

@@ -32,7 +32,7 @@ describe('notNull', () => {
 
   describe('extreme', () => {
 
-    it('handles long input data without issue', () => {
+    it('handles long input values without failure', () => {
       const input = '*'.repeat(Math.pow(2, 24));
       expect(notNull(input)).toBe(input);
     });
