@@ -53,7 +53,7 @@ describe('lengthBetween', () => {
     });
 
     it('defaults to a standard error message', () => {
-      expect(() => { lengthBetween('abcde', 2, 4) }).toThrow('value must has length between 2 and 4');
+      expect(() => { lengthBetween('abcde', 2, 4) }).toThrow('value must have length between 2 and 4');
     });
 
     it('allows a custom error message to be throw', () => {
