@@ -16,14 +16,10 @@ import { notNull, maxLength } from '@martellosecurity/conditions';
 ```
 
 ### Versioning
-Semantic versioning is followed.
-
-- Breaking changes get a new major version number.
-- New features result in a minor version increment.
-- Bug fixes result in a patch number increment.
+Semantic versioning is followed. See [semver.org](https://semver.org/) for more details.
 
 ### TypeScript
-The library comes complete with definitions that enable intellisense and the type system in editors which support typescript.
+The library comes complete with definition files that support the type system and enables intellisense in TypeScript editors.
 
 ### Condition: `notNull`
 Perhaps the most fundamental condition all domain objects should enforce is that their mandatory construction parameters are not null. Javascript has not just the concept of `null` but `undefined` also. The `notNull` function protects against both of these, throwing a `NullValueError` on failure.
