@@ -5,9 +5,9 @@ describe('matchesRegexp', () => {
   describe('valid', () => {
 
     test.each(
-      ['a123a', 'abcd1234abcd', 'A123A', 'ABCD1234ABCD']
+      ['a123a', 'A123A', new String('a123a'), new String('A123A')]
     )('returns input value which match the regexp format', (input) => {
-      expect(matchesRegexp(input, /[a-z]\d+[a-z]/i)).toBe(input);
+      expect(matchesRegexp(input as string, /[a-z]\d+[a-z]/i)).toBe(input);
     });
 
   });
@@ -21,9 +21,9 @@ describe('matchesRegexp', () => {
     });
 
     test.each(
-      ['abcd', '1234', 'a1b2']
+      ['abcd', '1234', 'a1b2', new String('abcd')]
     )('throws an error on input values which do not match the regexp format', (input) => {
-      expect(() => { matchesRegexp(input, /^\d{2}$/i) }).toThrow(RegexpMismatchError);
+      expect(() => { matchesRegexp(input as string, /^\d{2}$/i) }).toThrow(RegexpMismatchError);
     });
 
     it('defaults to a standard error message', () => {
