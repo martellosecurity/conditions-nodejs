@@ -25,9 +25,9 @@ describe('minLength', () => {
   describe('invalid', () => {
 
     test.each(
-      [null, undefined]
+      [null, undefined, new Date(), {}, 1.1]
     )('throws an error on objects without length', (input) => {
-      expect(() => { minLength(input, 3) }).toThrow(MinimumLengthError);
+      expect(() => { minLength(input as string, 3) }).toThrow(MinimumLengthError);
     });
 
     test.each(

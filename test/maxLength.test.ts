@@ -25,9 +25,9 @@ describe('maxLength', () => {
   describe('invalid', () => {
 
     test.each(
-      [null, undefined]
+      [null, undefined, new Date(), {}, 1.1]
     )('throws an error on objects without length', (input) => {
-      expect(() => { maxLength(input, 5) }).toThrow(MaximumLengthError);
+      expect(() => { maxLength(input as string, 5) }).toThrow(MaximumLengthError);
     });
 
     test.each(

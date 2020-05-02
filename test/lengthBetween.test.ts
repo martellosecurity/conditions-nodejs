@@ -35,9 +35,9 @@ describe('lengthBetween', () => {
   describe('invalid', () => {
 
     test.each(
-      [null, undefined]
+      [null, undefined, new Date(), {}, 1.1]
     )('throws an error on objects without length', (input) => {
-      expect(() => { lengthBetween(input, 2, 5) }).toThrow(MinimumLengthError);
+      expect(() => { lengthBetween(input as string, 2, 5) }).toThrow(MinimumLengthError);
     });
 
     test.each(
