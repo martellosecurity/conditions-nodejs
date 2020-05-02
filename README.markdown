@@ -21,8 +21,12 @@ The project comes complete with definition files that support the type system an
 ### Versioning Policy
 The project follows semantic versioning. See [semver.org](https://semver.org/) for more details.
 
-### Condition: `notNull`
-Perhaps the most fundamental condition all domain objects should enforce is that their mandatory construction parameters are not null. Javascript has not just the concept of `null` but `undefined` also. The `notNull` function protects against both of these, throwing a `NullValueError` on failure.
+## Conditions
+
+### Null Prevention
+Perhaps the most fundamental condition all domain objects should enforce is that mandatory parameters are not null. 
+
+Javascript includes both a `null` and an `undefined` value. The `notNull` condition protects against both of these, throwing a `NullValueError` on failure.
 
 ```javascript
 import { notNull } from '@martellosecurity/conditions';
@@ -36,21 +40,39 @@ class MyDomainPrimitive {
 }
 ```
 
-### Condition: `minLength`, `maxLength`
-The length of input data is another fundamental condition secure code should enforce. These checks are simple, efficient and should be done prior to any attempts to parse or process the data futher. Many different objects can have length in Javascript such as a `string`, an `array` or a `buffer`.
+By default, any error thrown includes a default message. This can be overridden with an optional second `notNull(input, message)` parameter.
 
-The `minLength` function verifies that the input value has a length greater than or equal to the specified `minimum` value. On failure a `MinimumLengthError` will be thrown.
+### Length Checks
+Verifying the length of input parameters (e.g. name or email) is a fundamental condition all code should enforce. These checks are simple, efficient and should be done before any attempt to parse or process the data futher (e.g. before format checks).
 
+Many different types can have length in Javascript such as a `string`, an `array`, a `buffer` or even one of your own domain objects. This family of conditions can be used with any object which has a length property.
+
+#### minLength
+The `minLength` function verifies that the input has a length greater than or equal to the specified `minimum` value. On failure a `MinimumLengthError` will be thrown.
+
+#### maxLength
 The `maxLength` function verifies that the input value has a length less than or equal to the specified `maximum` value. On failure a `MaximumLengthError` will be thrown.
 
+#### lengthBetween
+A combined `lengthBetween` function verifies that the input has a length between both specified `minimum` and `maximum` values (inclusive). 
+
+The minimum length check is performed first and the maximum length check second. On failure a `MinimumLengthError` or `MaximumLengthError` will be thrown depending on which check fails.
+
 ```javascript
-import { notNull, minLength } from '@martellosecurity/conditions';
+import { notNull, lengthBetween } from '@martellosecurity/conditions';
 
 class MyDomainPrimitive {
 
   constructor(value) {
     notNull(value);
-    this.value = minLength(value, 5);
+    this.value = lengthBetween(value, 5, 20);
   }
 
 }
+```
+
+By default, any error thrown includes a default message. This can be overridden with an optional final message parameter.
+
+```javascript
+lengthBetween(value, 5, 20, 'is not between 5 and 20 chars');
+```
