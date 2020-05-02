@@ -24,6 +24,8 @@ The project follows semantic versioning. See [semver.org](https://semver.org/) f
 ## Conditions
 
 ### Null Prevention
+_notNull(input, message)_
+
 Perhaps the most fundamental condition all domain objects should enforce is that mandatory parameters are not null. 
 
 Javascript includes both a `null` and an `undefined` value. The `notNull` condition protects against both of these, throwing a `NullValueError` on failure.
@@ -48,13 +50,19 @@ Verifying the length of input parameters (e.g. name or email) is a fundamental c
 Many different types can have length in Javascript such as a `string`, an `array`, a `buffer` or even one of your own domain objects. This family of conditions can be used with any object which has a length property.
 
 #### minLength
-The `minLength` function verifies that the input has a length greater than or equal to the specified `minimum` value. On failure a `MinimumLengthError` will be thrown.
+_minLength(input, minimum, message)_
+
+The `minLength` condition verifies that the input has a length greater than or equal to the specified `minimum` value. On failure a `MinimumLengthError` will be thrown.
 
 #### maxLength
-The `maxLength` function verifies that the input value has a length less than or equal to the specified `maximum` value. On failure a `MaximumLengthError` will be thrown.
+_maxLength(input, maximum, message)_
+
+The `maxLength` condition verifies that the input value has a length less than or equal to the specified `maximum` value. On failure a `MaximumLengthError` will be thrown.
 
 #### lengthBetween
-A combined `lengthBetween` function verifies that the input has a length between both specified `minimum` and `maximum` values (inclusive). 
+_lengthBetween(input, minimum, maximum, message)_
+
+A combined `lengthBetween` condition verifies that the input has a length between both specified `minimum` and `maximum` values (inclusive). 
 
 The minimum length check is performed first and the maximum length check second. On failure a `MinimumLengthError` or `MaximumLengthError` will be thrown depending on which check fails.
 
