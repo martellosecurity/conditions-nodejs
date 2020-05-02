@@ -86,3 +86,25 @@ class MyDomainPrimitive {
 
 }
 ```
+
+### Format Matching
+After basic conditions such as `notNull` and `maxLength` have been verified, syntactic checks such as the format of parameters can be performed.
+
+#### matchesRegexp
+_matchesRegexp(input, regexp, message?)_
+
+The `matchesRegexp` condition verifies that the input value matches the specified regexp format. Only `string` or `String` input values will be accepted. On failure a `RegexpMismatchError` will be thrown.
+
+```javascript
+import * as c from '@martellosecurity/conditions';
+
+class MyDomainPrimitive {
+
+  constructor(value) {
+    c.notNull(value);
+    c.lengthBetween(value, 5, 20);
+    this.value = c.matchesRegexp(value, /^ABC[a-z]+$/);
+  }
+
+}
+```
