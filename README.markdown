@@ -5,6 +5,26 @@ If you are unfamiliar with concepts such as conditions, invariants, design by co
 
 ![Integration](https://github.com/martellosecurity/conditions-nodejs/workflows/Integration/badge.svg)
 
+### Getting Started
+Execute the install command for the package manager your project is using
+`npm install --save @martellosecurity/conditions` or `yarn add @martellosecurity/conditions`.
+
+Then import the conditions you want to use in your class or functions.
+
+```javascript
+import { notNull, maxLength } from '@martellosecurity/conditions';
+```
+
+### Versioning
+Semantic versioning is followed.
+
+- Breaking changes get a new major version number.
+- New features result in a minor version increment.
+- Bug fixes result in a patch number increment.
+
+### TypeScript
+The library comes complete with definitions that enable intellisense and the type system in editors which support typescript.
+
 ### Condition: `notNull`
 Perhaps the most fundamental condition all domain objects should enforce is that their mandatory construction parameters are not null. Javascript has not just the concept of `null` but `undefined` also. The `notNull` function protects against both of these, throwing a `NullValueError` on failure.
 
