@@ -6,8 +6,13 @@ If you are unfamiliar with concepts such as conditions, invariants, design by co
 ![Integration](https://github.com/martellosecurity/conditions-nodejs/workflows/Integration/badge.svg)
 
 ### Getting Started
-Execute the install command for the package manager your project is using
-`npm install --save @martellosecurity/conditions` or `yarn add @martellosecurity/conditions`.
+Execute the install command for your chosen package manager.
+```
+npm install --save @martellosecurity/conditions
+```
+```
+yarn add @martellosecurity/conditions
+```
 
 Then import the conditions you want to use in your class or functions.
 
@@ -22,7 +27,7 @@ The project comes complete with definition files that support the type system an
 The project follows semantic versioning. See [semver.org](https://semver.org/) for more details.
 
 ## Conditions
-The basic idea of every condition is to make a very specific assertion returning the input value if the condition passes or throwing an appropriate error if it fails.
+The basic operation of all conditions is to make a very specific assertion returning the input value if the condition passes or throwing an appropriate error if it fails.
 
 The general function signature is that the input check value comes first, followed by any required configuration and an optional final message parameter.
 
