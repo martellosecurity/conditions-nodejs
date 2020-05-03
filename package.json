@@ -43,7 +43,8 @@
       "dist/"
     ],
     "rules": {
-      "tsdoc/syntax": "warn"
+      "tsdoc/syntax": "warn",
+      "@typescript-eslint/no-var-requires": "off"
     }
   }
 }

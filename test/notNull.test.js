@@ -1,4 +1,7 @@
-import { notNull, NullValueError } from '../src/index';
+const {
+  notNull,
+  NullValueError
+} = require('../src/index');
 
 describe('notNull', () => {
 

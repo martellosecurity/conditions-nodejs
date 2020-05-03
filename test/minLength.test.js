@@ -1,4 +1,7 @@
-import { minLength, MinimumLengthError } from '../src/index';
+const {
+  minLength,
+  MinimumLengthError
+} = require('../src/index');
 
 describe('minLength', () => {
 
@@ -27,7 +30,7 @@ describe('minLength', () => {
     test.each(
       [null, undefined, new Date(), {}, 1.1]
     )('throws an error on objects without length', (input) => {
-      expect(() => { minLength(input as string, 3) }).toThrow(MinimumLengthError);
+      expect(() => { minLength(input, 3) }).toThrow(MinimumLengthError);
     });
 
     test.each(

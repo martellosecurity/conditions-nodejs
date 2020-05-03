@@ -1,4 +1,7 @@
-import { maxLength, MaximumLengthError } from '../src/index';
+const {
+  maxLength,
+  MaximumLengthError
+} = require('../src/index');
 
 describe('maxLength', () => {
 
@@ -27,7 +30,7 @@ describe('maxLength', () => {
     test.each(
       [null, undefined, new Date(), {}, 1.1]
     )('throws an error on objects without length', (input) => {
-      expect(() => { maxLength(input as string, 5) }).toThrow(MaximumLengthError);
+      expect(() => { maxLength(input, 5) }).toThrow(MaximumLengthError);
     });
 
     test.each(
