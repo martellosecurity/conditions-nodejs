@@ -40,11 +40,11 @@
     ],
     "ignorePatterns": [
       "node_modules/",
-      "dist/"
+      "dist/",
+      "test/"
     ],
     "rules": {
-      "tsdoc/syntax": "warn",
-      "@typescript-eslint/no-var-requires": "off"
+      "tsdoc/syntax": "warn"
     }
   }
 }
