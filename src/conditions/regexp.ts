@@ -1,21 +1,21 @@
-class RegexpMismatchError extends Error {
+class RegExpMismatchError extends Error {
 }
 
 /**
  * Condition asserts that value matches specified regexp format.
  *
  * @param value - Value on which to run the condition.
- * @param format - Regexp format to match the value against.
+ * @param format - RegExp format to match the value against.
  * @param message - Override message to be thrown on failure.
  * @returns Value on passing the condition.
- * @throws TypeError or RegexpMismatchError.
+ * @throws TypeError or RegExpMismatchError.
  */
-function matchesRegexp(value: string, format: RegExp,
+function matchesRegExp(value: string, format: RegExp,
   message = 'value does not match regexp format'): string {
 
   // verify format parameter
   if (!(format instanceof RegExp)) {
-    throw new TypeError('format must be a RegExp');
+    throw new TypeError('format must be a regexp');
   }
 
   // verify message parameter
@@ -25,7 +25,7 @@ function matchesRegexp(value: string, format: RegExp,
 
   // perform actual test
   if ('string' !== typeof(value) || !format.test(value)) {
-    throw new RegexpMismatchError(message);
+    throw new RegExpMismatchError(message);
   }
 
   return value;
@@ -33,6 +33,6 @@ function matchesRegexp(value: string, format: RegExp,
 }
 
 export {
-  matchesRegexp,
-  RegexpMismatchError
+  matchesRegExp,
+  RegExpMismatchError
 }
