@@ -16,10 +16,20 @@ class MaximumLengthError extends Error {
  * @param minimum - Minimum length of the value.
  * @param message - Override message to be thrown on failure.
  * @returns Value on passing the condition.
- * @throws MinimumLengthError on failure.
+ * @throws TypeError or MinimumLengthError.
  */
 function minLength<T extends Length>(value: T, minimum: number,
-  message = `value must have minimum length of ${minimum}`): T {
+  message = 'value length less than minimum'): T {
+
+  // verify minimum parameter
+  if ('number' !== typeof(minimum)) {
+    throw new TypeError('minimum must be a number');
+  }
+
+  // verify message parameter
+  if ('string' !== typeof(message)) {
+    throw new TypeError('message must be a string');
+  }
 
   // check length property even exists
   if (null == value?.length || value.length < minimum) {

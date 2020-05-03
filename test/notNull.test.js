@@ -33,7 +33,7 @@ describe('notNull', () => {
 
     it('throws an error if a non string error message is provided', () => {
       expect(() => { notNull(null, new Object()) }).toThrow(TypeError);
-    })
+    });
 
   });
 
