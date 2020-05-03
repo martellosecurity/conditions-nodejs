@@ -52,7 +52,7 @@ describe('minLength', () => {
     });
 
     it('throws an error if a non string error message is provided', () => {
-      expect(() => { minLength('abcd', 5, new Object()) }).toThrow(TypeError);
+      expect(() => { minLength('abcd', 3, new Object()) }).toThrow(TypeError);
     });
 
   });

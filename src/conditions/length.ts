@@ -48,10 +48,20 @@ function minLength<T extends Length>(value: T, minimum: number,
  * @param maximum - Maximum length of the value.
  * @param message - Override message to be thrown on failure.
  * @returns Value on passing the condition.
- * @throws MaximumLengthError on failure.
+ * @throws TypeError or MaximumLengthError.
  */
 function maxLength<T extends Length>(value: T, maximum: number,
-  message = `value must have maximum length of ${maximum}`): T {
+  message = `value length greater than maximum`): T {
+
+  // verify maximum parameter
+  if ('number' !== typeof(maximum)) {
+    throw new TypeError('maximum must be a number');
+  }
+
+  // verify message parameter
+  if ('string' !== typeof(message)) {
+    throw new TypeError('message must be a string');
+  }
 
   // check length property even exists
   if (null == value?.length || value.length > maximum) {
@@ -71,7 +81,7 @@ function maxLength<T extends Length>(value: T, maximum: number,
  * @param maximum - Maximum length of the value.
  * @param message - Override message to be thrown on failure.
  * @returns Value on passing the condition.
- * @throws MinimumLengthError or MaximumLengthError on failure.
+ * @throws TypeError, MinimumLengthError or MaximumLengthError.
  */
 function lengthBetween<T extends Length>(value: T, minimum: number, maximum: number,
   message = `value must have length between ${minimum} and ${maximum}`): T {
