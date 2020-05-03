@@ -5,21 +5,26 @@ class RegexpMismatchError extends Error {
  * Condition asserts that value matches specified regexp format.
  *
  * @param value - Value on which to run the condition.
- * @param regexp - Regexp format to match the value against.
+ * @param format - Regexp format to match the value against.
  * @param message - Override message to be thrown on failure.
  * @returns Value on passing the condition.
- * @throws RegexpMismatchError on failure.
+ * @throws TypeError or RegexpMismatchError.
  */
-function matchesRegexp(value: string, regexp: RegExp,
-  message = 'value must match regexp'): string {
+function matchesRegexp(value: string, format: RegExp,
+  message = 'value does not match regexp format'): string {
 
-  // fighting typescript here but need to check for non-ts use
-  if (typeof value !== 'string' && !(value as unknown instanceof String)) {
-    throw new RegexpMismatchError(message);
+  // verify format parameter
+  if (!(format instanceof RegExp)) {
+    throw new TypeError('format must be a RegExp');
+  }
+
+  // verify message parameter
+  if ('string' !== typeof(message)) {
+    throw new TypeError('message must be a string');
   }
 
   // perform actual test
-  if (!regexp.test(value)) {
+  if ('string' !== typeof(value) || !format.test(value)) {
     throw new RegexpMismatchError(message);
   }
 
