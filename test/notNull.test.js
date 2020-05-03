@@ -1,11 +1,14 @@
-import { notNull, NullValueError } from '../src/index';
+const {
+  notNull,
+  NullValueError
+} = require('../src/index');
 
 describe('notNull', () => {
 
   describe('valid', () => {
 
     test.each(
-      [true, false, 0, 1.1, 'null', [], {}, new Date()]
+      [true, false, 0, 1.1, 'null', [], {}, new Object(), () => {}]
     )('returns non-null %s input value', (input) => {
       expect(notNull(input)).toBe(input);
     });
@@ -25,7 +28,11 @@ describe('notNull', () => {
     });
 
     it('allows a custom error message to be throw', () => {
-      expect(() => { notNull(null, 'no nulls') }).toThrow('no nulls');
+      expect(() => { notNull(null, 'no nulls allowed') }).toThrow('no nulls allowed');
+    });
+
+    it('throws an error if a non string error message is provided', () => {
+      expect(() => { notNull(null, new Object()) }).toThrow(TypeError);
     });
 
   });

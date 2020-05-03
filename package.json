@@ -40,7 +40,8 @@
     ],
     "ignorePatterns": [
       "node_modules/",
-      "dist/"
+      "dist/",
+      "test/"
     ],
     "rules": {
       "tsdoc/syntax": "warn"
