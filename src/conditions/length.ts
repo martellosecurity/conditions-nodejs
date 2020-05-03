@@ -84,7 +84,7 @@ function maxLength<T extends Length>(value: T, maximum: number,
  * @throws TypeError, MinimumLengthError or MaximumLengthError.
  */
 function lengthBetween<T extends Length>(value: T, minimum: number, maximum: number,
-  message = `value must have length between ${minimum} and ${maximum}`): T {
+  message = 'value length not between minimum and maximum'): T {
 
   // delegate to minLength condtion first, maxLength second
   return maxLength(minLength(value, minimum, message), maximum, message);
