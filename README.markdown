@@ -71,6 +71,11 @@ _maxLength\<T\>(input: T, maximum: number, message?: string): T_
 
 The `maxLength` condition verifies that the input value has a length less than or equal to the specified `maximum` value. On failure a `MaximumLengthError` will be thrown.
 
+#### exactLength
+_exactLength\<T\>(input: T, expected: number, message?: string): T_
+
+The `exactLength` condition verifies that the input value has a length equal to the specified `expected` value. On failure a `ExpectedLengthError` will be thrown.
+
 #### lengthBetween
 _lengthBetween\<T\>(input: T, minimum: number, maximum: number, message?: string): T_
 

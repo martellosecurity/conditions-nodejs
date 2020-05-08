@@ -3,10 +3,13 @@ interface Length {
 }
 
 class MinimumLengthError extends Error {
-};
+}
 
 class MaximumLengthError extends Error {
-};
+}
+
+class ExpectedLengthError extends Error {
+}
 
 /**
  * Condition asserts that value has a length greater than or equal to a
@@ -91,10 +94,44 @@ function lengthBetween<T extends Length>(value: T, minimum: number, maximum: num
 
 }
 
+/**
+ * Condition asserts the value has a length equal to a specified
+ * expected length.
+ * 
+ * @param value - Value on which to run the condition.
+ * @param expected - Expected length of the value. 
+ * @param message - Override message to be thrown on failure.
+ * @returns Value on passing the condition.
+ * @throws TypeError or ExpectedLengthError.
+ */
+function exactLength<T extends Length>(value: T, expected: number,
+  message = 'value length did not match expected length'): T {
+
+  // verify expected parameter
+  if ('number' !== typeof(expected)) {
+    throw new TypeError('expected length must be a number');
+  }
+
+  // verify message parameter
+  if ('string' !== typeof(message)) {
+    throw new TypeError('message must be a string');
+  }
+
+  // check length property even exists
+  if (null == value?.length || value.length !== expected) {
+    throw new ExpectedLengthError(message);
+  }
+
+  return value;
+
+}
+
 export {
   minLength,
   maxLength,
   lengthBetween,
+  exactLength,
   MinimumLengthError,
-  MaximumLengthError
+  MaximumLengthError,
+  ExpectedLengthError
 }
