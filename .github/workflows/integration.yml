@@ -7,7 +7,7 @@ on:
     branches: [master]
 
 jobs:
-  build:
+  integrate:
 
     runs-on: ubuntu-latest
 
