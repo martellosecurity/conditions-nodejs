@@ -1,6 +1,9 @@
 ## Changelog
 All notable changes to the project will be documented in this file.
 
+### v1.0.0
+ - Prepared for v1.0.0 release.
+
 ### v0.2.2
 - Fixed issue preventing npm publish from github.
 

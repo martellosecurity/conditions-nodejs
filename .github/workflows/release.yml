@@ -19,7 +19,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: yarn install
       - run: yarn make
-      - name: Create Release ${{ github.ref }}
+      - name: Create GitHub Release ${{ github.ref }}
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -28,8 +28,8 @@ jobs:
           release_name: ${{ github.ref }}
           body: See the CHANGELOG file for details.
           draft: false
-          prerelease: true
+          prerelease: false
       - run: npm publish --access public
-        name: Publish Release ${{ github.ref }}
+        name: Publish NPM Release ${{ github.ref }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
