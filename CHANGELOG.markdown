@@ -1,7 +1,7 @@
 ## Changelog
 All notable changes to the project will be documented in this file.
 
-### Unreleased
+### v1.1.0
 - Added new `exactLength` condition.
 
 ### v1.0.0
