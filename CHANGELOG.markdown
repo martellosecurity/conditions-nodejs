@@ -1,6 +1,9 @@
 ## Changelog
 All notable changes to the project will be documented in this file.
 
+### v1.1.1
+ - Update lodash via jest, eslint to resolve CVE-2020-8203.
+
 ### v1.1.0
 - Added new `exactLength` condition.
 
