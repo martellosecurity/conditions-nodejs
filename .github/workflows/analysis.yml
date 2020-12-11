@@ -27,8 +27,5 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
-    - run: yarn install
-    - run: yarn make
-
     - name: Analyse
       uses: github/codeql-action/analyze@v1
